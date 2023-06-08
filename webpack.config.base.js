@@ -12,5 +12,42 @@ module.exports = {
       title: 'PCK',
       template: 'src/assets/index.html'
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(png|svg|jpe?g|gif)$/i,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.styl$/i,
+        loader: [
+          "style-loader",
+          "css-loader",
+          "stylus-loader"
+        ]
+      },
+      {
+        test: /\.less$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          "less-loader"
+        ]
+      },
+      {
+        test: /\.scss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require('dart-sass')
+            }
+          }
+        ]
+      }
+    ]
+  }
 };
